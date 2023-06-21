@@ -32,8 +32,10 @@ EXPOSE 4200
 
 #ADD assets/entrypoint.sh /usr/local/sbin/
 
-RUN cat ./assets/entrypoint.sh
+
 COPY ./assets/entrypoint.sh /usr/local/sbin/
+
+RUN cat /usr/local/sbin/entrypoint.sh
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["shellinabox"]
