@@ -1,4 +1,5 @@
 FROM ubuntu:latest
+WORKDIR /code
 
 ENV SIAB_USERCSS="Normal:+/etc/shellinabox/options-enabled/00+Black-on-White.css,Reverse:-/etc/shellinabox/options-enabled/00_White-On-Black.css;Colors:+/etc/shellinabox/options-enabled/01+Color-Terminal.css,Monochrome:-/etc/shellinabox/options-enabled/01_Monochrome.css" \
     SIAB_PORT=4200 \
@@ -33,9 +34,12 @@ EXPOSE 4200
 #ADD assets/entrypoint.sh /usr/local/sbin/
 
 
-COPY ./assets/entrypoint.sh /usr/local/sbin/
+#COPY ./assets/entrypoint.sh /usr/local/sbin/
 
-RUN cat /usr/local/sbin/entrypoint.sh
+#RUN cat /usr/local/sbin/entrypoint.sh
+COPY ./assets/entrypoint.sh /code/entrypoint.sh
 
-ENTRYPOINT ["/usr/local/sbin/entrypoint.sh"]
+RUN cat /code/entrypoint.sh
+
+ENTRYPOINT ["/code/entrypoint.sh"]
 CMD ["shellinabox"]
