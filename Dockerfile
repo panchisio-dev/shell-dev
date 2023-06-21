@@ -37,5 +37,5 @@ COPY ./assets/entrypoint.sh /usr/local/sbin/
 
 RUN cat /usr/local/sbin/entrypoint.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/usr/local/sbin/entrypoint.sh"]
 CMD ["shellinabox"]
