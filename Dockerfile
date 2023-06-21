@@ -28,9 +28,11 @@ RUN apt-get update && apt-get install -y openssl curl openssh-client sudo shelli
 
 EXPOSE 4200
 
-VOLUME /etc/shellinabox /var/log/supervisor /home
+#VOLUME /etc/shellinabox /var/log/supervisor /home
 
 #ADD assets/entrypoint.sh /usr/local/sbin/
+
+RUN cat ./assets/entrypoint.sh
 COPY ./assets/entrypoint.sh /usr/local/sbin/
 
 ENTRYPOINT ["entrypoint.sh"]
